@@ -1,5 +1,5 @@
 import streamlit as st
-from apps import raw,tableau_dashboard,problem_statement
+from apps import raw,tableau_dashboard,problem_statement,visualisations
 
 
 
@@ -9,6 +9,6 @@ if choice == "Problem Statement":
 elif choice=="Raw Dataset and Cleaned Dataset":
     raw.Raw_Data().run()
 elif choice == "Operations on Cleaned Dataset":
-    st.write("Yes")
+    visualisations.Analysis().run()
 else:
     tableau_dashboard.display_tableauReport()
