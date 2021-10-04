@@ -86,6 +86,14 @@ def change_datatype(data):
     return data
 
 
+def positive(column):
+    for i in column:
+        if i > 0:
+            return i
+        else:
+            return i*(-1)
+
+1
 class rawdatacleaning:
 
     #reading the dataset
@@ -106,6 +114,7 @@ class rawdatacleaning:
 
         # Reviews
         df.loc[df.Reviews == '3.0M','Reviews'] = 3000000
+
 
         # Sizecolumn
         df["Size_New"] = df[['Size']].apply(Size_mk, axis=1)
@@ -138,6 +147,9 @@ class rawdatacleaning:
 
         #change the datatype of the column
         sdf = change_datatype(df)
+
+        ## there are some negative signs before('-') we will remove them in column Reviews
+        df['Reviews'] = df[['Reviews']].apply(positive, axis=1)
 
         #droping the old uncleaned columns as new columns for them are created
         df.drop(['Android Ver', 'Current Ver', 'Last Updated', 'Price', 'Installs', 'Size'], axis=1, inplace=True)
