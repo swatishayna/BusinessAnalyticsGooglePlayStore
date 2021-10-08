@@ -3,3 +3,4 @@ pandas
 streamlit
 scikit-learn
 plotly
+Pillow
