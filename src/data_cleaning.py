@@ -1,4 +1,6 @@
 import pandas as pd
+from apps.config import Config
+import os
 
 
 # Every Entry in Size column has "M" , "+" and "K" which needs to be removed and datatype into int/float
@@ -97,7 +99,10 @@ def positive(column):
 class rawdatacleaning:
 
     #reading the dataset
-    gps = pd.read_csv("Data_given\googleplaystore.csv")
+    #gps = pd.read_csv("Data_given\googleplaystore.csv")
+    path = os.path.join(Config.DATA_PATH,"googleplaystore.csv")
+    gps = pd.read_csv(path)
+    print(path)
 
     def view_missingvalues(self):
         return self.gps.isnull().sum()

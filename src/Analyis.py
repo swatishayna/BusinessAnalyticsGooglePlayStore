@@ -3,12 +3,16 @@ import numpy as np
 from src.data_cleaning import rawdatacleaning
 import plotly.figure_factory as ff
 import plotly.express as px
-
+from apps.config import Config
+import os
 
 
 
 class VisualisationAnalysis(rawdatacleaning):
-    data = pd.read_csv("Data_given\gpscleaned.csv")
+    #data = pd.read_csv("Data_given\gpscleaned.csv")
+    path = os.path.join(Config.DATA_PATH, "gpscleaned.csv")
+    data = pd.read_csv(path)
+    print(path)
     x_val = data['Installs_New'].groupby(by=data['Category']).sum().sort_values(ascending=False)
     x_rat_cat = data['Rating'].groupby(by=data['Category']).mean().sort_values(ascending=False)
     x_cat_rev = data['Reviews'].groupby(by=data['Category']).sum().sort_values(ascending=False)
