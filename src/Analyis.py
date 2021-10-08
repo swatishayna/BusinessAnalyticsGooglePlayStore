@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 from src.data_cleaning import rawdatacleaning
-import plotly.figure_factory as ff
 import plotly.express as px
 from apps.config import Config
 import os
