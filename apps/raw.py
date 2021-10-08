@@ -1,7 +1,8 @@
 import streamlit as st
 from src.data_cleaning import rawdatacleaning
 import pandas as pd
-
+from apps.config import Config
+import os
 
 class Raw_Data:
     raw = rawdatacleaning()
@@ -41,8 +42,10 @@ class Raw_Data:
             """)
             clean = st.button("CleanData")
             if clean:
-                self.raw.cleandataframe(rawdatacleaning.gps)
-                cleaned_dataframe = pd.read_csv('Data_given\gpscleaned.csv')
+                data = rawdatacleaning.gps.copy()
+                self.raw.cleandataframe(data)
+                path_cleaned =os.path.join(Config.DATA_PATH, "gpscleaned.csv")
+                cleaned_dataframe = pd.read_csv(path_cleaned)
                 st.dataframe(cleaned_dataframe)
                 st.write(self.raw.datatype(cleaned_dataframe))
 
