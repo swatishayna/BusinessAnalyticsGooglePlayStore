@@ -100,9 +100,9 @@ class rawdatacleaning:
 
     #reading the dataset
     #gps = pd.read_csv("Data_given\googleplaystore.csv")
-    path = os.path.join(Config.DATA_PATH,"googleplaystore.csv")
-    gps = pd.read_csv(path)
-    print(path)
+    path1 = os.path.join(Config.DATA_PATH,"googleplaystore.csv")
+    gps = pd.read_csv(path1)
+
 
     def view_missingvalues(self):
         return self.gps.isnull().sum()
