@@ -14,3 +14,4 @@ elif choice == "Tableau Dashboard":
     tableau_dashboard.display_tableauReport()
 else:
     transformation.Transform_Train().run()
+    model.run()

@@ -6,8 +6,7 @@ class Transform_Train:
         st.title("Google Play Store Analytics\n\n")
         data = transformdata.get_data()
 
-        dict_category = transformdata.generate_dictionary(data)[0]
-        dict_content_rating =transformdata.generate_dictionary(data)[1]
+
 
         transformed_data = transformdata.encode_data(data)
         imputed_data = transformdata.impute_nan(transformed_data)
