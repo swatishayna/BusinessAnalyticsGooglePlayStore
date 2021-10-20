@@ -4,8 +4,11 @@ import os
 from sklearn.preprocessing import LabelEncoder
 from sklearn.impute import SimpleImputer
 
-def get_data():
-    data = os.path.join(Config.DATA_PATH, "gpscleaned.csv")
+def get_data(process):
+    if process == 'transform':
+        data = os.path.join(Config.DATA_PATH, "gpscleaned.csv")
+    else:
+        data = os.path.join(Config.DATA_PATH, "gpsfinal.csv")
     data = pd.read_csv(data)
     return data
 

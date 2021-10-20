@@ -1,6 +1,8 @@
 import streamlit as st
-from apps.transformation import Transform_Train
-from src import transformdata
+from src import transformtraindata
+import pickle
+import numpy as np
+
 
 def run():
     st.subheader("Google Play Store Rating Prediction App")
@@ -8,9 +10,9 @@ def run():
 
 
     #['Category NUM', 'Reviews', 'Size', 'Installs', 'Price', 'Content Rating NUM']
-    data = transformdata.get_data()
-    dict_category = transformdata.generate_dictionary(data)[0]
-    dict_content_rating =transformdata.generate_dictionary(data)[1]
+    data = transformtraindata.get_data()
+    dict_category = transformtraindata.generate_dictionary(data)[0]
+    dict_content_rating =transformtraindata.generate_dictionary(data)[1]
 
     # inputs
     Category = st.selectbox("Input the category of the Android Application", dict_category.keys())
@@ -21,4 +23,11 @@ def run():
     Content_Rating = st.selectbox("Input the Content Rating of the android application",dict_content_rating.keys())
     submit = st.button('Predict')
     if submit:
-        st.write('yes')
+        input_list = [dict_category[Category],Reviews,Size,Installs,Price,dict_content_rating[Content_Rating]]
+        input_list = np.array(input_list).reshape(1, -1)
+        #load model
+        # loading the stored model for prediction
+        model = pickle.load(open('rfr_best.pickle', 'rb'))
+        output = model.predict(input_list)
+        if output:
+            st.write(output)
