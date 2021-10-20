@@ -23,7 +23,6 @@ def encode_data(data):
     encoder = LabelEncoder()
     data["Category_new"] = encoder.fit_transform(data.Category)
     data["Content_Rating_new"] = encoder.fit_transform(data["Content Rating"])
-    data['Type_new'] = encoder.fit_transform(data["Type"])
     return data
 
 def impute_nan(data):
