@@ -9,7 +9,7 @@ def Size_mk(column):
     for i in column:
         if str(i).endswith("M"):
             i = i.replace(",","")
-            return float(i[:-1])*1000
+            return float(i[:-1])*1000  #1024
         elif str(i).endswith("k"):
             i = i.replace(",","")
             return float(i[:-1])

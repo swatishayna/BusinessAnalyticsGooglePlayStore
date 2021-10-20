@@ -15,9 +15,10 @@ class Raw_Data:
         if view_df:
             st.dataframe(rawdatacleaning.gps)
 
-        df_info = st.checkbox("Brief Information of the dataframe")
+        df_info = st.checkbox("Brief Information of the dataset")
         if df_info:
-            st.table(pd.DataFrame(rawdatacleaning.gps.info()))
+            st.write("It is the web scraped data of 10k Play Store apps for analyzing the Android market. "
+                     "It consists of in total of 10841 rows and 13 columns.")
 
 
         view_missing_values = st.checkbox("View Number of Missing Values")

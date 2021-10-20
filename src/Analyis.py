@@ -85,3 +85,4 @@ class VisualisationAnalysis(rawdatacleaning):
         app_number = self.data_fixedSize[self.data_fixedSize['Size_New'] > app_size]['Size_New'].groupby(by=self.data_fixedSize['Category']).count().sort_values(ascending=False)
         fig = px.bar(self.data_fixedSize, x=app_number.index, y=app_number.values, color=app_number.index)
         return fig
+
